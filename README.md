@@ -1,5 +1,3 @@
 # BrickStep
-Don't Step On The Black
+JS implementation of BrickStep
 
-##Introduction
-Spring 2016 CS252 Final Project
