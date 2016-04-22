@@ -1,0 +1,3 @@
+[submodule "public/BrickStep"]
+	path = public/BrickStep
+	url = git@github.com:BrickStep/BrickStep.git
