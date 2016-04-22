@@ -1,3 +1,2 @@
 # BrickStep
-JS implementation of BrickStep
-
+BrickStep Server
