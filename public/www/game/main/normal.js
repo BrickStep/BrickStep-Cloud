@@ -48,6 +48,7 @@ var BrickStep;
                 align: "center",
                 fill: "#3d3d3d"
             };
+            this.game.paused = true;
             this.startTime = this.game.time.time;
             this.maxTime = this.startTime;
             this.timeText = this.game.add.text(this.game.world.centerX, 20, '00:00:00', style);
@@ -62,15 +63,17 @@ var BrickStep;
             this.initTiles();
             this.v = 200;
             this.timer = this.game.time.events.loop(780, this.addRowOfTiles, this);
-            this.game.paused = true;
             spaceKey.onDown.add(this.start, this);
             this.initLosePage();
+            this.gameTimer = 0;
+            this.game.time.events.loop(100, function () { this.gameTimer++; }, this);
+            //this.gameTimer.start();
         }
         youDie() {
             console.log("YOU DIE");
             this.isLost = true;
             this.loseGroup.show(this.timeText.text);
-            var url = "/score?username=" + BrickStep.user + "&score=" + this.timeText.text.replace(/\:/g, "") + "&mode=n";
+            var url = "/score?username=" + BrickStep.user + "&score=" + this.timeText.text + "&mode=n";
             $.get(url);
             if (BrickStep.flag == true) {
                 BrickStep.music.stop();
@@ -206,20 +209,21 @@ var BrickStep;
         updateTimer() {
             if (this.isLost)
                 return;
-            let minutes;
-            let seconds;
-            let milliseconds;
-            minutes = Math.floor((this.game.time.time - this.startTime) / 60000) % 60;
-            seconds = Math.floor((this.game.time.time - this.startTime) / 1000) % 60;
-            milliseconds = Math.floor(this.game.time.time - this.startTime) % 100;
-            //If any of the digits becomes a single digit number, pad it with a zero
-            if (milliseconds < 10)
-                milliseconds = '0' + milliseconds;
-            if (seconds < 10)
-                seconds = '0' + seconds;
-            if (minutes < 10)
-                minutes = '0' + minutes;
-            this.timeText.setText(minutes + ':' + seconds + ':' + milliseconds);
+            // let minutes: any;
+            // let seconds: any;
+            // let milliseconds: any;
+            // var gametime = this.gameTimer;
+            // minutes = Math.floor( gametime / 6000) % 60;
+            // seconds = Math.floor( gametime / 100) % 60;
+            // milliseconds = Math.floor(gametime) % 100;
+            // //If any of the digits becomes a single digit number, pad it with a zero
+            // if (milliseconds < 10)
+            //     milliseconds = '0' + milliseconds;
+            // if (seconds < 10)
+            //     seconds = '0' + seconds;
+            // if (minutes < 10)
+            //     minutes = '0' + minutes;
+            this.timeText.setText(Math.floor(this.gameTimer * this.v / 10));
         }
         updateVelocity() {
             this.maxTime = this.game.time.time;
