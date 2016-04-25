@@ -1,21 +1,128 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>BrickStep</title>
-    <script type="text/javascript" src="scripts/jquery-2.2.3.min.js"></script>
-    <script type="text/javascript" src="scripts/phaser.min.js"></script>
-    <script type="text/javascript" src="scripts/require.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+    <title>Brick Step</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script src="scripts/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
 </head>
-
 <body>
-<div id="content" style="
-    position: absolute;
-    width: 480px;
-    height: 640px;
-    left: 50%;
-    margin-left: -240px"></div>
+
+<!-- Sidebar -->
+<section id="sidebar">
+    <div class="inner">
+        <nav>
+            <ul>
+                <li><a href="#game">Brick Step</a></li>
+                <li><a href="#intro">Introduction</a></li>
+                <!--<li><a href="#screenshot">Screenshots</a></li>-->
+                <li><a href="#ranking">Rankings</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- game -->
+    <section id="game" class="wrapper style2 fullscreen fade-up">
+        <div class="inner" style="text-align: center">
+            <h1 style="font-size:96px">Brick Step</h1>
+            <p></p>
+            <h3>The Only Rule is...</h3>
+            <h1>Don't Step On the White tile!</h1>
+            <p style="font-size:32px"></p>
+            <ul class="actions">
+                <li><a href="game.html" class="button big">Game Start</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- intro -->
+    <section id="intro" class="wrapper style1 spotlights">
+        <section>
+            <div class="content" >
+                <img src="assets/image/gameplay_normal.gif" alt="" data-position="center center" style="width:240px;" align="middle"/>
+            </div>
+            <div class="content">
+
+                <div class="inner">
+                    <h2>Normal Mode</h2>
+                    <p></p>
+                    <p>The brick will move in an increasing speed.</p>
+                    <p>The score is calculated based on time and velocity. </p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="content">
+                <div class="inner">
+                    <h2>Zen Mode</h2>
+                    <p></p>
+                    <p>The brick will never move if you never press.</p>
+                    <p>The score is based on the bricks you have done. </p>
+                </div>
+            </div>
+            <div class="content" >
+                <img src="assets/image/gameplay_zen.gif" alt="" data-position="center center" style="width:240px;" align="middle"/>
+            </div>
+        </section>
+    </section>
+
+<!--    &lt;!&ndash; Screenshot &ndash;&gt;
+    <section id="screenshot" class="wrapper style3 fade-up">
+        <div class="inner">
+            <h2>Screenshots</h2>
+            <div class="box alt">
+                <div class="row uniform">
+                    <div class="4u"><span class="image fit"><img src="assets/image/phaser.png" alt=""/></span></div>
+                    <div class="4u"><span class="image fit"><img src="assets/image/phaser.png" alt=""/></span></div>
+                    <div class="4u$"><span class="image fit"><img src="assets/image/phaser.png" alt=""/></span></div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Rank -->
+    <section id="ranking" class="wrapper style3 fade-up">
+        <div class="inner">
+            <h2>Rankings</h2>
+        </div>
+    </section>
+
+</div>
+
+<!-- Footer -->
+<footer id="footer" class="wrapper style2-alt">
+    <div class="inner">
+        <ul class="menu">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="scripts/jquery-2.2.3.min.js"></script>
+<script src="scripts/jquery.scrollex.min.js"></script>
+<script src="scripts/jquery.scrolly.min.js"></script>
+<script src="scripts/skel.min.js"></script>
+<script src="scripts/util.js"></script>
+<!--[if lte IE 8]>
+<script src="scripts/ie/respond.min.js"></script><![endif]-->
+<script src="scripts/main.js"></script>
 
 </body>
 </html>
