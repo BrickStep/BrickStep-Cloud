@@ -21,10 +21,10 @@ router.get('/', function(req, res, next) {
 
     //return;
     var connection = sql.createConnection({
-        host     : 'us-cdbr-iron-east-03.cleardb.net',
-        user     : 'b0a6777de6b104',
-        password : '071bc89e',
-        database : 'ad_8dc3cd0f6b0352c'
+        host     : process.env['dbURL'],
+        user     : process.env['dbUsername'],
+        password : process.env['dbPassword'],
+        database : process.env['dbName']
     });
 
     //next();

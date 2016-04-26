@@ -34,6 +34,7 @@ app.listen(appEnv.port, '0.0.0.0', function() {
     process.env['dbPort'] = dbCred['port'];
     process.env['dbUsername'] = dbCred['username'];
     process.env['dbPassword'] = dbCred['password'];
+    process.env['dbName'] = dbCred['name'];
     console.log(dbCred);
 	// print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
