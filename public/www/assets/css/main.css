@@ -1622,7 +1622,7 @@
 	}
 
 	body {
-		background: #312450;
+		background: #E0E1DD;
 	}
 
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -3249,31 +3249,31 @@
 			}
 
 		.wrapper.alt {
-			background-color: #261c3e;
+			background-color: #0D1B2A;
 		}
 
 		.wrapper.style1 {
-			background-color: #5e42a6;
+			background-color: #1B263B;
 		}
 
 		.wrapper.style1-alt {
-			background-color: #493382;
+			background-color: #1B263B;
 		}
 
 		.wrapper.style2 {
-			background-color: #5052b5;
+			background-color: #778da9;
 		}
 
 		.wrapper.style2-alt {
-			background-color: #3e4094;
+			background-color: #1D253F;
 		}
 
 		.wrapper.style3 {
-			background-color: #b74e91;
+			background-color: #415A77;
 		}
 
 		.wrapper.style3-alt {
-			background-color: #953d75;
+			background-color: #415A77;
 		}
 
 		.wrapper.fullscreen {
@@ -3380,7 +3380,7 @@
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		background-color: #5e42a6;
+		background-color: #0D1B2A;
 		cursor: default;
 		padding: 0.75em 2em;
 	}
@@ -3534,7 +3534,7 @@
 
 	#sidebar {
 		padding: 2.5em 2.5em 0.5em 2.5em ;
-		background: #312450;
+		background: #0D1B2A;
 		cursor: default;
 		height: 100vh;
 		left: 0;
@@ -3771,7 +3771,7 @@
 			}
 
 			#sidebar nav a:before {
-				background: #3c2c62;
+				background: #0D1B2A;
 			}
 
 			#sidebar nav a:after {

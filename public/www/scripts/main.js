@@ -1,210 +1,238 @@
 /*
-	Hyperspace by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+ Hyperspace by HTML5 UP
+ html5up.net | @n33co
+ Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+ */
 
-(function($) {
+(function ($) {
 
-	skel.breakpoints({
-		xlarge:	'(max-width: 1680px)',
-		large:	'(max-width: 1280px)',
-		medium:	'(max-width: 980px)',
-		small:	'(max-width: 736px)',
-		xsmall:	'(max-width: 480px)'
-	});
+    skel.breakpoints({
+        xlarge: '(max-width: 1680px)',
+        large: '(max-width: 1280px)',
+        medium: '(max-width: 980px)',
+        small: '(max-width: 736px)',
+        xsmall: '(max-width: 480px)'
+    });
 
-	$(function() {
 
-		var	$window = $(window),
-			$body = $('body'),
-			$sidebar = $('#sidebar');
+    $(function () {
 
-		// Hack: Enable IE flexbox workarounds.
-			if (skel.vars.IEVersion < 12)
-				$body.addClass('is-ie');
+        var $window = $(window),
+            $body = $('body'),
+            $sidebar = $('#sidebar');
 
-		// Disable animations/transitions until the page has loaded.
-			if (skel.canUse('transition'))
-				$body.addClass('is-loading');
+        // Hack: Enable IE flexbox workarounds.
+        if (skel.vars.IEVersion < 12)$window
+        $body.addClass('is-ie');
 
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading');
-				}, 100);
-			});
+        // Disable animations/transitions until the page has loaded.
+        if (skel.canUse('transition'))
+            $body.addClass('is-loading');
 
-		// Forms.
+        $window.on('load', function () {
+            window.setTimeout(function () {
+                $body.removeClass('is-loading');
+            }, 100);
+        });
 
-			// Fix: Placeholder polyfill.
-				$('form').placeholder();
+        // Forms.
 
-			// Hack: Activate non-input submits.
-				$('form').on('click', '.submit', function(event) {
+        // Fix: Placeholder polyfill.
+        $('form').placeholder();
 
-					// Stop propagation, default.
-						event.stopPropagation();
-						event.preventDefault();
+        // Hack: Activate non-input submits.
+        $('form').on('click', '.submit', function (event) {
 
-					// Submit form.
-						$(this).parents('form').submit();
+            // Stop propagation, default.
+            event.stopPropagation();
+            event.preventDefault();
 
-				});
+            // Submit form.
+            $(this).parents('form').submit();
 
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
+        });
 
-		// Sidebar.
-			if ($sidebar.length > 0) {
+        // Prioritize "important" elements on medium.
+        skel.on('+medium -medium', function () {
+            $.prioritize(
+                '.important\\28 medium\\29',
+                skel.breakpoint('medium').active
+            );
+        });
 
-				var $sidebar_a = $sidebar.find('a');
+        // Sidebar.
+        if ($sidebar.length > 0) {
 
-				$sidebar_a
-					.addClass('scrolly')
-					.on('click', function() {
+            var $sidebar_a = $sidebar.find('a');
 
-						var $this = $(this);
+            $sidebar_a
+                .addClass('scrolly')
+                .on('click', function () {
 
-						// External link? Bail.
-							if ($this.attr('href').charAt(0) != '#')
-								return;
+                    var $this = $(this);
 
-						// Deactivate all links.
-							$sidebar_a.removeClass('active');
+                    // External link? Bail.
+                    if ($this.attr('href').charAt(0) != '#')
+                        return;
 
-						// Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
-							$this
-								.addClass('active')
-								.addClass('active-locked');
+                    // Deactivate all links.
+                    $sidebar_a.removeClass('active');
 
-					})
-					.each(function() {
+                    // Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
+                    $this
+                        .addClass('active')
+                        .addClass('active-locked');
 
-						var	$this = $(this),
-							id = $this.attr('href'),
-							$section = $(id);
+                })
+                .each(function () {
 
-						// No section for this link? Bail.
-							if ($section.length < 1)
-								return;
+                    var $this = $(this),
+                        id = $this.attr('href'),
+                        $section = $(id);
 
-						// Scrollex.
-							$section.scrollex({
-								mode: 'middle',
-								top: '-20vh',
-								bottom: '-20vh',
-								initialize: function() {
+                    // No section for this link? Bail.
+                    if ($section.length < 1)
+                        return;
 
-									// Deactivate section.
-										if (skel.canUse('transition'))
-											$section.addClass('inactive');
+                    // Scrollex.
+                    $section.scrollex({
+                        mode: 'middle',
+                        top: '-20vh',
+                        bottom: '-20vh',
+                        initialize: function () {
 
-								},
-								enter: function() {
+                            // Deactivate section.
+                            if (skel.canUse('transition'))
+                                $section.addClass('inactive');
 
-									// Activate section.
-										$section.removeClass('inactive');
+                        },
+                        enter: function () {
 
-									// No locked links? Deactivate all links and activate this section's one.
-										if ($sidebar_a.filter('.active-locked').length == 0) {
+                            // Activate section.
+                            $section.removeClass('inactive');
 
-											$sidebar_a.removeClass('active');
-											$this.addClass('active');
+                            // No locked links? Deactivate all links and activate this section's one.
+                            if ($sidebar_a.filter('.active-locked').length == 0) {
 
-										}
+                                $sidebar_a.removeClass('active');
+                                $this.addClass('active');
 
-									// Otherwise, if this section's link is the one that's locked, unlock it.
-										else if ($this.hasClass('active-locked'))
-											$this.removeClass('active-locked');
+                            }
 
-								}
-							});
+                            // Otherwise, if this section's link is the one that's locked, unlock it.
+                            else if ($this.hasClass('active-locked'))
+                                $this.removeClass('active-locked');
 
-					});
+                        }
+                    });
 
-			}
+                });
 
-		// Scrolly.
-			$('.scrolly').scrolly({
-				speed: 1000,
-				offset: function() {
+        }
 
-					// If <=large, >small, and sidebar is present, use its height as the offset.
-						if (skel.breakpoint('large').active
-						&&	!skel.breakpoint('small').active
-						&&	$sidebar.length > 0)
-							return $sidebar.height();
+        // Scrolly.
+        $('.scrolly').scrolly({
+            speed: 1000,
+            offset: function () {
 
-					return 0;
+                // If <=large, >small, and sidebar is present, use its height as the offset.
+                if (skel.breakpoint('large').active
+                    && !skel.breakpoint('small').active
+                    && $sidebar.length > 0)
+                    return $sidebar.height();
 
-				}
-			});
+                return 0;
 
-		// Spotlights.
-			$('.spotlights > section')
-				.scrollex({
-					mode: 'middle',
-					top: '-10vh',
-					bottom: '-10vh',
-					initialize: function() {
+            }
+        });
 
-						// Deactivate section.
-							if (skel.canUse('transition'))
-								$(this).addClass('inactive');
+        // Spotlights.
+        $('.spotlights > section')
+            .scrollex({
+                mode: 'middle',
+                top: '-10vh',
+                bottom: '-10vh',
+                initialize: function () {
 
-					},
-					enter: function() {
+                    // Deactivate section.
+                    if (skel.canUse('transition'))
+                        $(this).addClass('inactive');
 
-						// Activate section.
-							$(this).removeClass('inactive');
+                },
+                enter: function () {
 
-					}
-				})
-				.each(function() {
+                    // Activate section.
+                    $(this).removeClass('inactive');
 
-					var	$this = $(this),
-						$image = $this.find('.image'),
-						$img = $image.find('img'),
-						x;
+                }
+            })
+            .each(function () {
 
-					// Assign image.
-						$image.css('background-image', 'url(' + $img.attr('src') + ')');
+                var $this = $(this),
+                    $image = $this.find('.image'),
+                    $img = $image.find('img'),
+                    x;
 
-					// Set background position.
-						if (x = $img.data('position'))
-							$image.css('background-position', x);
+                // Assign image.
+                $image.css('background-image', 'url(' + $img.attr('src') + ')');
 
-					// Hide <img>.
-						$img.hide();
+                // Set background position.
+                if (x = $img.data('position'))
+                    $image.css('background-position', x);
 
-				});
+                // Hide <img>.
+                $img.hide();
 
-		// Features.
-			if (skel.canUse('transition'))
-				$('.features')
-					.scrollex({
-						mode: 'middle',
-						top: '-20vh',
-						bottom: '-20vh',
-						initialize: function() {
+            });
 
-							// Deactivate section.
-								$(this).addClass('inactive');
+        // Features.
+        if (skel.canUse('transition'))
+            $('.features')
+                .scrollex({
+                    mode: 'middle',
+                    top: '-20vh',
+                    bottom: '-20vh',
+                    initialize: function () {
 
-						},
-						enter: function() {
+                        // Deactivate section.
+                        $(this).addClass('inactive');
 
-							// Activate section.
-								$(this).removeClass('inactive');
+                    },
+                    enter: function () {
 
-						}
-					});
+                        // Activate section.
+                        $(this).removeClass('inactive');
 
-	});
+                    }
+                });
+        $.getJSON({url:"getscore?mode=n", success:function (data) {
+            console.log(data);
+            //var score[];
+            var count = 1;
+            $.each(data, function (id,obj) {
+                //score.push(val);
+                $("#normal_table").find("tbody")
+                    .append($('<tr>')
+                        .append($('<th>').text(count++))
+                        .append($('<th>').text(obj['username']))
+                        .append($('<th>').text(obj['score']))
+                    );
+            });
+        }});
+        $.getJSON({url:"getscore?mode=z", success:function (data) {
+            console.log(data);
+            //var score[];
+            var count = 1;
+            $.each(data, function (id,obj) {
+                //score.push(val);
+                $("#zen_table").find("tbody")
+                    .append($('<tr>')
+                        .append($('<th>').text(count++))
+                        .append($('<th>').text(obj['username']))
+                        .append($('<th>').text(obj['score']))
+                    );
+            });
+        }});
+    });
 
 })(jQuery);
